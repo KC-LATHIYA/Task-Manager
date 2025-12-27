@@ -44,7 +44,8 @@ const loginUser = asyncHandler(async function (req, res) {
 
     const option = {
         httpOnly: true,
-        secure: true
+        secure: true,
+        sameSite: "none"
     }
 
     const loginUser = await User.findById(user._id);
@@ -128,7 +129,8 @@ const refreshAccessToken = asyncHandler(async function (req, res) {
 
     const option = {
         httpOnly: true,
-        secure: true
+        secure: true,
+        sameSite: "none"
     }
 
     res.status(200)
@@ -151,6 +153,7 @@ const logoutUser = asyncHandler(async function (req, res) {
     const option = {
         httpOnly: true,
         secure: true,
+        sameSite: "none"
     };
 
     const userId = req.user?._id;
