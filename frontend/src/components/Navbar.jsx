@@ -8,7 +8,7 @@ import {
   LayoutDashboard,
   ListTodo,
   PlusSquare,
-  Users // Added Users icon
+  Users 
 } from 'lucide-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLogoutuserMutation } from '../services/authAPI';
@@ -41,7 +41,6 @@ const Navbar = () => {
   const linkStyle =
     'text-slate-500 hover:text-blue-600 font-medium transition-colors flex items-center gap-2';
   
-  // Style for mobile links
   const mobileLinkStyle =
     'block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 flex items-center gap-3';
 
@@ -50,7 +49,6 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
 
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <div className="bg-blue-600 p-1.5 rounded-lg group-hover:bg-blue-700 transition-colors">
               <CheckSquare className="h-6 w-6 text-white" />
@@ -60,7 +58,6 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* DESKTOP NAV (Hidden on Mobile) */}
           <div className="hidden md:flex items-center space-x-8">
             {user?.role === 'admin' && (
               <>
@@ -91,7 +88,6 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* DESKTOP RIGHT SIDE (Hidden on Mobile) */}
           <div className="hidden md:flex items-center space-x-4">
             {user ? (
               <>
@@ -132,7 +128,6 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* MOBILE MENU BUTTON */}
           <div className="md:hidden flex items-center gap-4">
             {user && (
               <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs border border-blue-200">
@@ -146,11 +141,9 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* MOBILE DROPDOWN MENU */}
       {isOpen && (
         <div className="md:hidden bg-white border-t border-slate-100 p-4 space-y-2 shadow-lg animate-in slide-in-from-top-5 duration-200">
           
-          {/* Admin Routes */}
           {user?.role === 'admin' && (
             <>
               <Link to="/admin/dashboard" className={mobileLinkStyle} onClick={() => setIsOpen(false)}>
@@ -167,8 +160,6 @@ const Navbar = () => {
               </Link>
             </>
           )}
-
-          {/* User Routes */}
           {user?.role === 'user' && (
             <>
               <Link to="/dashboard" className={mobileLinkStyle} onClick={() => setIsOpen(false)}>
@@ -182,7 +173,6 @@ const Navbar = () => {
 
           <div className="border-t border-slate-100 my-2 pt-2">
             {user ? (
-              // Mobile Logged In State
               <>
                 <div className="flex items-center gap-3 mb-3 px-2 py-2 bg-slate-50 rounded-lg">
                   <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">
@@ -201,7 +191,6 @@ const Navbar = () => {
                 </button>
               </>
             ) : (
-              // Mobile Logged Out State
               <div className="flex flex-col gap-3 mt-4">
                 <Link 
                   to="/login" 
